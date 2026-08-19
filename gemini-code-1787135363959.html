@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Tiếng Anh Tương Tác - Ms Lê Hằng English</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-grad-1: #8854C0;
+            --bg-grad-2: #FDCB6E;
+            --bg-grad-3: #00C9A7;
+            --bg-grad-4: #E84393;
+            --correct-color: #00D26A;
+            --correct-shadow: #00A352;
+            --wrong-color: #FF4757;
+            --wrong-shadow: #D63031;
+            --btn-default: #F0F3F8;
+            --btn-shadow: #CBD0D9;
+            --text-dark: #2D3436;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', 'Quicksand', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3), var(--bg-grad-4));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+            padding: 20px 10px 60px 10px;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* SVG Background Patterns */
+        .bg-patterns {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.25;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath fill='%23FFFFFF' d='M30 15 l3 7 h7 l-5 5 l2 7 l-7-4 l-7 4 l2-7 l-5-5 h7 z M80 70 l4 9 h9 l-7 6 l3 9 l-9-5 l-9 5 l3-9 l-7-6 h9 z M15 85 a 8 8 0 1 0 16 0 a 8 8 0 1 0 -16 0 M90 20 a 10 10 0 1 0 20 0 a 10 10 0 1 0 -20 0'%3E%3C/path%3E%3C/svg%3E");
+            animation: floatingPattern 25s linear infinite;
+        }
+
+        @keyframes floatingPattern {
+            from { background-position: 0 0; }
+            to { background-position: 500px 1000px; }
+        }
+
+        .main-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .teacher-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #8854C0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            margin-bottom: 12px;
+        }
+
+        /* Banner Notification */
+        .notice-banner {
+            background: #FFF3BF;
+            border: 3px solid #FCC419;
+            border-radius: 20px;
+            padding: 16px 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            margin-bottom: 25px;
+            animation: pulseBanner 2s infinite alternate;
+        }
+
+        @keyframes pulseBanner {
+            0% { transform: scale(0.99); }
+            100% { transform: scale(1.01); }
+        }
+
+        .notice-title {
+            color: #E67700;
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .notice-body {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #495057;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .notice-highlight {
+            display: block;
+            margin-top: 6px;
+            color: #D9480F;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border: 4px solid #FFFFFF;
+            transition: transform 0.2s ease;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: #E84393;
+            color: white;
+            font-weight: 800;
+            padding: 3px 12px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #8854C0;
+            color: white;
+            font-weight: 900;
+            padding: 4px 14px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            margin-left: 6px;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #2D3436;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .passage-box {
+            background: #EBF8FF;
+            border: 2px solid #3182CE;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: #2B6CB0;
+            font-weight: 700;
+        }
+
+        /* Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        @media (min-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .option-btn {
+            background: var(--btn-default);
+            border: 2px solid #DCDFE6;
+            border-radius: 18px;
+            padding: 14px 18px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #2D3436;
+            cursor: pointer;
+            box-shadow: 0 6px 0 var(--btn-shadow);
+            transition: all 0.15s ease;
+            text-align: left;
+            position: relative;
+            outline: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 var(--btn-shadow);
+            background: #FFFFFF;
+        }
+
+        .option-btn:active:not(:disabled) {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 var(--btn-shadow);
+        }
+
+        .option-btn.correct {
+            background: var(--correct-color) !important;
+            color: white !important;
+            border-color: #00B159 !important;
+            box-shadow: 0 6px 0 var(--correct-shadow) !important;
+        }
+
+        .option-btn.wrong {
+            background: var(--wrong-color) !important;
+            color: white !important;
+            border-color: #E03B4B !important;
+            box-shadow: 0 6px 0 var(--wrong-shadow) !important;
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        /* Explanation Box - STRICT 4-STEP STRUCTURE */
+        .explanation-box {
+            margin-top: 20px;
+            background: #F8F9FA;
+            border-left: 6px solid #8854C0;
+            border-radius: 12px;
+            padding: 18px;
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-title {
+            font-weight: 900;
+            color: #8854C0;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .exp-step {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #2D3436;
+        }
+
+        .exp-step-title {
+            font-weight: 800;
+            color: #0984E3;
+        }
+
+        /* Bottom Submit Area */
+        .submit-section {
+            text-align: center;
+            margin: 40px 0 20px 0;
+        }
+
+        .submit-btn {
+            background: #00C9A7;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 900;
+            padding: 16px 48px;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 8px 0 #00967D;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 11px 0 #00967D;
+        }
+
+        .submit-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 3px 0 #00967D;
+        }
+
+        /* Result Modal Popup */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 24px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        @keyframes popUp {
+            from { transform: scale(0.6); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .score-badge {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #FDCB6E;
+            color: #D63031;
+            font-size: 2.2rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+            box-shadow: 0 8px 0 #E1B12C;
+        }
+
+        .modal-feedback {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #2D3436;
+            margin: 15px 0 25px 0;
+            line-height: 1.5;
+        }
+
+        .close-modal-btn {
+            background: #8854C0;
+            color: white;
+            font-weight: 800;
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #6C38A1;
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-patterns"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="main-wrapper">
+        <header>
+            <div class="teacher-tag">Giáo viên tạo: Ms Lê Hằng English</div>
+        </header>
+
+        <div class="notice-banner">
+            <div class="notice-title">⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</div>
+            <div class="notice-body">
+                Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.
+                Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!
+                <span class="notice-highlight">* Kéo tới đâu, làm tới đó! *</span>
+            </div>
+        </div>
+
+        <!-- Dynamic Questions Container -->
+        <div id="quiz-container"></div>
+
+        <div class="submit-section">
+            <button class="submit-btn" onclick="submitQuiz()">NỘP BÀI THI 🚀</button>
+        </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal-content">
+            <div class="score-badge" id="modal-score">0/37</div>
+            <h2 style="color: #8854C0; font-weight: 900;" id="modal-title">KẾT QUẢ BÀI THI</h2>
+            <div class="modal-feedback" id="modal-msg"></div>
+            <button class="close-modal-btn" onclick="closeModal()">Đóng & Xem Lại Bài</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            // --- SECTION III: QUESTIONS 1 TO 27 (IMAGE 1) ---
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q1",
+                section: "Section III: Multiple Choice",
+                question: "1. Juan and Patrian are not the same height. Juan is ________ Patricia.",
+                options: ["A. as tall as", "B. not as tall as", "C. more tall than", "D. not tall than"],
+                correct: 1,
+                explanation: {
+                    step1: "Juan và Patrian không cao bằng nhau. Juan không cao bằng Patricia.",
+                    step2: "• not as tall as: không cao bằng",
+                    step3: "Cấu trúc so sánh không bằng: `not as + adj + as` -> 'not as tall as'.",
+                    step4: "Loại A (bằng nhau - mâu thuẫn câu đầu); C, D sai công thức so sánh."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q2",
+                section: "Section III: Multiple Choice",
+                question: "2. The instrument sounds ________ a cello, but I can't guess the exact name.",
+                options: ["A. like", "B. similar", "C. same", "D. different"],
+                correct: 0,
+                explanation: {
+                    step1: "Nhạc cụ này nghe có vẻ giống cây đàn cello, nhưng tớ không đoán được tên chính xác.",
+                    step2: "• sound like + N: nghe có vẻ giống cái gì",
+                    step3: "Cụm động từ tri giác: `sound like + danh từ` -> 'sounds like a cello'.",
+                    step4: "Loại B (similar to); C (the same as); D (different from)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q3",
+                section: "Section III: Multiple Choice",
+                question: "3. She prefers watching Korean movies ________ listening to K-pop.",
+                options: ["A. with", "B. to", "C. of", "D. for"],
+                correct: 1,
+                explanation: {
+                    step1: "Cô ấy thích xem phim Hàn Quốc hơn là nghe nhạc K-pop.",
+                    step2: "• prefer V-ing to V-ing: thích làm gì hơn làm gì",
+                    step3: "Cấu trúc so sánh sở thích: `prefer + V-ing + TO + V-ing`.",
+                    step4: "Loại A, C, D vì không đi với cấu trúc 'prefer'."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q4",
+                section: "Section III: Multiple Choice",
+                question: "4. Thomas Newman ________ music for many Pixar movies including Finding Nemo and WALL-E.",
+                options: ["A. performed", "B. painted", "C. composed", "D. played"],
+                correct: 2,
+                explanation: {
+                    step1: "Thomas Newman đã soạn nhạc cho nhiều bộ phim của Pixar bao gồm Đi tìm Nemo và WALL-E.",
+                    step2: "• composed (v-ed): soạn nhạc / sáng tác nhạc",
+                    step3: "Động từ đi kết hợp với 'music' để chỉ việc viết nhạc cho phim: 'composed music' (soạn nhạc).",
+                    step4: "Loại A (biểu diễn), B (vẽ), D (chơi nhạc) không mang nghĩa sáng tác nhạc cho phim."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q5",
+                section: "Section III: Multiple Choice",
+                question: "5. I went to the 3D ________ last weekend. The paintings were excellent!",
+                options: ["A. movie theater", "B. concert hall", "C. opera house", "D. art gallery"],
+                correct: 3,
+                explanation: {
+                    step1: "Tớ đã đến phòng triển lãm nghệ thuật 3D vào cuối tuần trước. Các bức tranh thật tuyệt vời!",
+                    step2: "• 3D art gallery (n phr): phòng triển lãm tranh 3D",
+                    step3: "Nơi trưng bày các bức tranh vẽ ('paintings') là phòng triển lãm nghệ thuật ('art gallery').",
+                    step4: "Loại A (rạp chiếu phim), B (phòng hòa nhạc), C (nhà hát opera) không chuyên trưng bày tranh."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q6",
+                section: "Section III: Multiple Choice",
+                question: "6. Picasso is one of the most famous ________ in the world.",
+                options: ["A. actresses", "B. engineers", "C. painters", "D. composers"],
+                correct: 2,
+                explanation: {
+                    step1: "Picasso là một trong những họa sĩ nổi tiếng nhất thế giới.",
+                    step2: "• painters (n): các họa sĩ",
+                    step3: "Picasso là danh họa vẽ tranh nổi tiếng toàn thế giới -> chọn 'painters'.",
+                    step4: "Loại A (nữ diễn viên), B (kỹ sư), D (nhà soạn nhạc)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q7",
+                section: "Section III: Multiple Choice",
+                question: "7. “Yeezus” is quite ________ from the other hip-hop albums.",
+                options: ["A. different", "B. like", "C. as", "D. same"],
+                correct: 0,
+                explanation: {
+                    step1: "Album “Yeezus” khá khác biệt so với các album hip-hop khác.",
+                    step2: "• different from: khác biệt với",
+                    step3: "Cụm tính từ đi với giới từ cố định: `different from`.",
+                    step4: "Loại B (like không đi với from); C (as); D (the same as)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q8",
+                section: "Section III: Multiple Choice",
+                question: "8. This information is ________ for me than the previous one.",
+                options: ["A. useful", "B. as useful", "C. more useful", "D. the most useful"],
+                correct: 2,
+                explanation: {
+                    step1: "Thông tin này hữu ích với tớ hơn thông tin trước đó.",
+                    step2: "• more useful than: hữu ích hơn",
+                    step3: "Từ nhận biết 'than' chỉ so sánh hơn. Tính từ dài 'useful' -> `more useful`.",
+                    step4: "Loại A chưa chia so sánh; B là so sánh bằng; D là so sánh nhất."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q9",
+                section: "Section III: Multiple Choice",
+                question: "9. He painted a ________ of her.",
+                options: ["A. landscape", "B. sculpture", "C. portrait", "D. show"],
+                correct: 2,
+                explanation: {
+                    step1: "Anh ấy đã vẽ một bức tranh chân dung của cô ấy.",
+                    step2: "• portrait (n): bức tranh chân dung",
+                    step3: "Tranh vẽ hình ảnh con người ('of her') là bức chân dung ('portrait').",
+                    step4: "Loại A (tranh phong cảnh); B (bức tượng điêu khắc); D (buổi biểu diễn)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q10",
+                section: "Section III: Multiple Choice",
+                question: "10. Would you like ________ bread with your soup?",
+                options: ["A. some", "B. any", "C. a", "D. an"],
+                correct: 0,
+                explanation: {
+                    step1: "Cậu có muốn dùng một chút bánh mì ăn kèm súp không?",
+                    step2: "• some bread: một ít bánh mì",
+                    step3: "Lời mời lịch sự `Would you like...?` đứng trước danh từ không đếm được 'bread' -> dùng 'some'.",
+                    step4: "Loại B ('any' không dùng cho lời mời); C, D ('bread' không đếm được không đi với a/an)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q11",
+                section: "Section III: Multiple Choice",
+                question: "11. There are ________ people on this planet – more than 7.9 billion.",
+                options: ["A. much", "B. some", "C. lots of", "D. a lot"],
+                correct: 2,
+                explanation: {
+                    step1: "Có rất nhiều người trên hành tinh này – hơn 7.9 tỷ người.",
+                    step2: "• lots of people: rất nhiều người",
+                    step3: "Danh từ 'people' là danh từ đếm được số nhiều. 'lots of' đi với danh từ số nhiều mang nghĩa rất nhiều.",
+                    step4: "Loại A ('much' đi với danh từ không đếm được); B ('some' không nhấn mạnh quy mô 7.9 tỷ); D ('a lot' thiếu 'of')."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q12",
+                section: "Section III: Multiple Choice",
+                question: "12. My mom usually makes delicious ________ rolls for my family to enjoy.",
+                options: ["A. summer", "B. autumn", "C. spring", "D. winter"],
+                correct: 2,
+                explanation: {
+                    step1: "Mẹ tớ thường làm món nem rán (spring rolls) rất ngon cho gia đình tớ thưởng thức.",
+                    step2: "• spring rolls (n phr): món nem rán / chả giò",
+                    step3: "Món ăn truyền thống nem rán trong tiếng Anh là 'spring rolls'.",
+                    step4: "Loại A (summer rolls = gỏi cuốn); B, D không phải món nem truyền thống."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q13",
+                section: "Section III: Multiple Choice",
+                question: "13. We need a ________ of bread to make the sandwiches for everyone.",
+                options: ["A. carton", "B. bar", "C. loaf", "D. tube"],
+                correct: 2,
+                explanation: {
+                    step1: "Chúng tớ cần một ổ bánh mì để làm bánh mì kẹp cho mọi người.",
+                    step2: "• a loaf of bread (n phr): một ổ bánh mì",
+                    step3: "Đơn vị đếm ổ bánh mì là 'a loaf of bread'.",
+                    step4: "Loại A (carton - hộp giấy sữa); B (bar - thanh xà phòng/chocolate); D (tube - tuýp)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q14",
+                section: "Section III: Multiple Choice",
+                question: "14. My lemonade is a bit ________. Can you give me some sugar, please?",
+                options: ["A. sour", "B. sweet", "C. spicy", "D. salty"],
+                correct: 0,
+                explanation: {
+                    step1: "Nước chanh của tớ hơi bị chua. Cậu cho tớ xin chút đường được không?",
+                    step2: "• sour (adj): chua",
+                    step3: "Xin thêm đường ('give me some sugar') cho thấy nước chanh đang bị chua ('sour').",
+                    step4: "Loại B (ngọt), C (cay), D (mặn) không cần cho thêm đường."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q15",
+                section: "Section III: Multiple Choice",
+                question: "15. You put ________ sugar in the soup. It was too sweet.",
+                options: ["A. any", "B. a lot of", "C. lot of", "D. some"],
+                correct: 1,
+                explanation: {
+                    step1: "Cậu đã cho quá nhiều đường vào món súp. Nó ngọt quá.",
+                    step2: "• a lot of sugar: rất nhiều đường",
+                    step3: "Món súp quá ngọt ('too sweet') chứng tỏ đã cho rất nhiều đường ('a lot of sugar').",
+                    step4: "Loại A (any); C (thiếu 'a'); D (some không diễn tả vị ngọt gắt quá mức)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q16",
+                section: "Section III: Multiple Choice",
+                question: "16. I haven't got ________ bread left. Would you like ________ noodles instead?",
+                options: ["A. any – any", "B. some – some", "C. no – some", "D. any – some"],
+                correct: 3,
+                explanation: {
+                    step1: "Tớ không còn chút bánh mì nào cả. Cậu có muốn ăn một ít mì thay thế không?",
+                    step2: "• any bread / some noodles",
+                    step3: "Vế 1 phủ định 'haven't got' dùng 'any'; vế 2 lời mời lịch sự `Would you like...?` dùng 'some'.",
+                    step4: "Loại A, B, C vì dùng sai vị trí any/some."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q17",
+                section: "Section III: Multiple Choice",
+                question: "17. ________ fresh water over the rice and put the pot into the cooker.",
+                options: ["A. Pour", "B. Cook", "C. Boil", "D. Fry"],
+                correct: 0,
+                explanation: {
+                    step1: "Hãy đổ nước sạch đè lên mặt gạo rồi đặt nồi vào nồi cơm điện.",
+                    step2: "• Pour fresh water: đổ / rót nước sạch",
+                    step3: "Hành động rót/đổ nước vào gạo trước khi cắm cơm là 'Pour'.",
+                    step4: "Loại B (nấu), C (đun sôi), D (rán/chiên)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q18",
+                section: "Section III: Multiple Choice",
+                question: "18. A ________ is a small meal that you eat when you are in a hurry.",
+                options: ["A. snack", "B. fast food", "C. breakfast", "D. lunch"],
+                correct: 0,
+                explanation: {
+                    step1: "Bữa ăn nhẹ / món ăn vặt là một bữa ăn nhỏ bạn ăn khi đang vội vã.",
+                    step2: "• A snack (n): bữa ăn nhẹ / đồ ăn vặt",
+                    step3: "Định nghĩa bữa ăn nhỏ nhanh gọn khi vội: 'A snack'.",
+                    step4: "Loại B, C, D không phải định nghĩa bữa ăn nhỏ phụ."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q19",
+                section: "Section III: Multiple Choice",
+                question: "19. The exhibition opens ________ the National Gallery ________ July.",
+                options: ["A. in – at", "B. at – in", "C. at – at", "D. on – on"],
+                correct: 1,
+                explanation: {
+                    step1: "Buổi triển lãm khai mạc tại Bảo tàng Quốc gia vào tháng Bảy.",
+                    step2: "• at the National Gallery / in July",
+                    step3: "Giới từ chỉ địa điểm tòa nhà 'at the National Gallery'; giới từ chỉ tháng 'in July'.",
+                    step4: "Loại A, C, D vì dùng sai giới từ địa điểm và tháng."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q20",
+                section: "Section III: Multiple Choice",
+                question: "20. I saw an old friend ________ the bus ________ Friday evening, but he didn't see me.",
+                options: ["A. in – on", "B. in – in", "C. on – on", "D. at – at"],
+                correct: 2,
+                explanation: {
+                    step1: "Tớ thấy một người bạn cũ trên xe buýt vào tối Thứ Sáu, nhưng cậu ấy không nhìn thấy tớ.",
+                    step2: "• on the bus / on Friday evening",
+                    step3: "Phương tiện xe buýt công cộng dùng 'on the bus'; thời gian có buổi kèm thứ dùng 'on Friday evening'.",
+                    step4: "Loại A, B, D dùng sai giới từ xe buýt công cộng và thứ trong tuần."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q21",
+                section: "Section III: Multiple Choice",
+                question: "21. The school is famous ________ high qualified teachers and modern school facilities.",
+                options: ["A. in", "B. with", "C. of", "D. for"],
+                correct: 3,
+                explanation: {
+                    step1: "Ngôi trường này nổi tiếng về đội ngũ giáo viên trình độ cao và cơ sở vật chất hiện đại.",
+                    step2: "• famous for: nổi tiếng về cái gì",
+                    step3: "Cụm tính từ đi với giới từ cố định: `famous for`.",
+                    step4: "Loại A, B, C không đi với 'famous'."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q22",
+                section: "Section III: Multiple Choice",
+                question: "22. Children should ________ outdoor activities for physical and mental health benefits.",
+                options: ["A. take place", "B. take part in", "C. look at", "D. build up"],
+                correct: 1,
+                explanation: {
+                    step1: "Trẻ em nên tham gia vào các hoạt động ngoài trời vì lợi ích sức khỏe thể chất và tinh thần.",
+                    step2: "• take part in: tham gia vào",
+                    step3: "Cụm động từ tham gia hoạt động: 'take part in outdoor activities'.",
+                    step4: "Loại A (diễn ra); C (nhìn vào); D (xây dựng)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q23",
+                section: "Section III: Multiple Choice",
+                question: "23. Some students are playing volleyball in the school ________.",
+                options: ["A. gym", "B. library", "C. garden", "D. laboratory"],
+                correct: 0,
+                explanation: {
+                    step1: "Một số học sinh đang chơi bóng chuyền ở nhà thể chất của trường.",
+                    step2: "• school gym (n): nhà thể chất / phòng tập thể thao trường",
+                    step3: "Địa điểm chơi các môn thể thao bóng chuyền trong trường là 'school gym'.",
+                    step4: "Loại B (thư viện), C (khu vườn), D (phòng thí nghiệm)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q24",
+                section: "Section III: Multiple Choice",
+                question: "24. Students must pass a(n) ________ examination to enroll in Walnut High School.",
+                options: ["A. entrance", "B. first-term", "C. mid-term", "D. final"],
+                correct: 0,
+                explanation: {
+                    step1: "Học sinh phải vượt qua kỳ thi tuyển sinh đầu vào để nhập học tại Trường THPT Walnut.",
+                    step2: "• entrance examination (n phr): kỳ thi tuyển sinh / thi đầu vào",
+                    step3: "Kỳ thi quyết định việc trúng tuyển nhập học ('enroll') là kỳ thi tuyển sinh ('entrance examination'). Mạo từ 'an' đứng trước 'entrance'.",
+                    step4: "Loại B (thi học kỳ 1), C (thi giữa kỳ), D (thi cuối kỳ)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q25",
+                section: "Section III: Multiple Choice",
+                question: "25. Teachers always try to make their lessons fun and ________, so students will like the classes.",
+                options: ["A. modern", "B. suitable", "C. enjoyable", "D. talented"],
+                correct: 2,
+                explanation: {
+                    step1: "Các thầy cô luôn cố gắng làm cho bài giảng vui vẻ và thú vị, nhờ đó học sinh sẽ yêu thích lớp học.",
+                    step2: "• enjoyable (adj): thú vị / đem lại niềm vui",
+                    step3: "Cấu trúc song song tính từ: 'fun and enjoyable' (vui vẻ và thú vị).",
+                    step4: "Loại A (hiện đại), B (phù hợp), D (tài năng)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q26",
+                section: "Section III: Multiple Choice",
+                question: "26. The teacher shows us pictures and videos on the screen using a/an ________.",
+                options: ["A. projector", "B. equipment", "C. office", "D. timetable"],
+                correct: 0,
+                explanation: {
+                    step1: "Giáo viên chiếu cho chúng tớ xem hình ảnh và video trên màn hình bằng một chiếc máy chiếu.",
+                    step2: "• a projector (n): máy chiếu",
+                    step3: "Thiết bị dùng để trình chiếu ảnh và video lên màn hình là máy chiếu ('projector'). Mạo từ 'a' đi với 'projector'.",
+                    step4: "Loại B (equipment - danh từ không đếm được); C (văn phòng); D (thời khóa biểu)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec III - Q27",
+                section: "Section III: Multiple Choice",
+                question: "27. The New York Public Library main branch is ________ 42nd Street ________ Manhattan.",
+                options: ["A. in – on", "B. in – in", "C. at – in", "D. on – in"],
+                correct: 3,
+                explanation: {
+                    step1: "Chi nhánh chính của Thư viện Công cộng New York nằm trên Đường 42 ở Manhattan.",
+                    step2: "• on 42nd Street / in Manhattan",
+                    step3: "Giới từ chỉ tên đường dùng 'on 42nd Street'; giới từ chỉ quận/thành phố dùng 'in Manhattan'.",
+                    step4: "Loại A, B, C vì dùng sai giới từ đi với tên đường và tên khu vực quận/thành phố."
+                }
+            },
+
+            // --- CONVERSATIONAL EXCHANGES (QUESTIONS 1 TO 6 - IMAGE 2) ---
+            {
+                type: "mc",
+                qNumLabel: "Conversational - Q1",
+                section: "Conversational Exchanges",
+                question: "1. A: “What instrument can you play?” – B: “________”",
+                options: [
+                    "A. I can sing English songs.",
+                    "B. I can play the guitar.",
+                    "C. I often listen to music in my free time.",
+                    "D. Playing instrument helps me relax."
+                ],
+                correct: 1,
+                explanation: {
+                    step1: "A: “Cậu có thể chơi được nhạc cụ nào?” – B: “Tớ có thể chơi đàn ghi-ta.”",
+                    step2: "• play the guitar: chơi đàn ghi-ta",
+                    step3: "Trả lời trực tiếp cho câu hỏi về khả năng chơi nhạc cụ ('What instrument...?').",
+                    step4: "Loại A (hát tiếng Anh); C (nghe nhạc); D (lợi ích chơi nhạc cụ)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Conversational - Q2",
+                section: "Conversational Exchanges",
+                question: "2. A: I think Adele has got a sweet voice. – B: “________”",
+                options: [
+                    "A. I am not either.",
+                    "B. Me too.",
+                    "C. That’s a good idea",
+                    "D. Adele is beautiful."
+                ],
+                correct: 1,
+                explanation: {
+                    step1: "A: Tớ nghĩ Adele có một giọng hát rất ngọt ngào. – B: Tớ cũng nghĩ vậy.",
+                    step2: "• Me too: Tớ cũng vậy (đồng ý với nhận định khẳng định)",
+                    step3: "Đồng ý với nhận định khẳng định khen giọng hát của Adele -> 'Me too'.",
+                    step4: "Loại A (dùng cho câu phủ định); C (tán thành gợi ý); D (khen ngoại hình chệch hướng)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Conversational - Q3",
+                section: "Conversational Exchanges",
+                question: "3. A: How about a drink? – B: “________”",
+                options: [
+                    "A. I’d like some chicken soup.",
+                    "B. No, thank you.",
+                    "C. Drinking milk is good for our health.",
+                    "D. I love eating snacks in my free time."
+                ],
+                correct: 1,
+                explanation: {
+                    step1: "A: Uống chút gì nhé? – B: Không, cảm ơn cậu.",
+                    step2: "• No, thank you: Lời từ chối lịch sự trước lời mời đồ uống",
+                    step3: "Đáp lại lời mời uống nước 'How about a drink?': 'No, thank you.'.",
+                    step4: "Loại A (chicken soup là đồ ăn món súp); C (nêu lợi ích của sữa); D (nói về món ăn vặt)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Conversational - Q4",
+                section: "Conversational Exchanges",
+                question: "4. A: ________? – B: “There are 40 computer rooms and they are very modern.”",
+                options: [
+                    "A. Is there a computer room at your school?",
+                    "B. Can you tell me more about the computer room?",
+                    "C. Would you like to visit the computer room?",
+                    "D. Where is the computer room?"
+                ],
+                correct: 1,
+                explanation: {
+                    step1: "A: Cậu có thể kể cho tớ nghe thêm về phòng máy tính được không? – B: Có 40 phòng máy tính và chúng rất hiện đại.",
+                    step2: "• Can you tell me more about...: Cậu kể thêm cho tớ nghe về...",
+                    step3: "B trả lời mô tả chi tiết số lượng và đặc điểm phòng máy tính -> câu hỏi A yêu cầu mô tả thông tin 'tell me more about...'.",
+                    step4: "Loại A (câu hỏi Yes/No); C (rủ đi tham quan); D (hỏi vị trí ở đâu)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Conversational - Q5",
+                section: "Conversational Exchanges",
+                question: "5. A: “Can you help me with my homework?” – B: “________”",
+                options: [
+                    "A. Great! Let’s go.",
+                    "B. Thank you so much.",
+                    "C. Sure. Let me see it.",
+                    "D. I don’t think it’s difficult."
+                ],
+                correct: 2,
+                explanation: {
+                    step1: "A: “Cậu có thể giúp tớ làm bài tập về nhà được không?” – B: “Chắc chắn rồi. Đưa tớ xem nào.”",
+                    step2: "• Sure. Let me see it.: Chắc chắn rồi. Đưa tớ xem nào",
+                    step3: "Nhận lời giúp đỡ bài tập một cách thân thiện, nhiệt tình -> 'Sure. Let me see it.'.",
+                    step4: "Loại A (rủ đi đâu đó); B (cảm ơn); D (nhận xét độ khó)."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Conversational - Q6",
+                section: "Conversational Exchanges",
+                question: "6. A: “________” – B: “I prefer modern art.”",
+                options: [
+                    "A. Do you like art?",
+                    "B. Which one do you like better, modern art or folk art?",
+                    "C. Can you tell me something about art?",
+                    "D. What is your favourite form of art?"
+                ],
+                correct: 1,
+                explanation: {
+                    step1: "A: “Cậu thích cái nào hơn, nghệ thuật hiện đại hay nghệ thuật dân gian?” – B: “Tớ thích nghệ thuật hiện đại hơn.”",
+                    step2: "• Which one do you like better...?: Cậu thích cái nào hơn...?",
+                    step3: "B trả lời 'I prefer...' chỉ sự lựa chọn giữa hai đối tượng -> câu hỏi A phải đưa ra sự lựa chọn 'Which one do you like better, modern art or folk art?'.",
+                    step4: "Loại A, C, D không đặt ra sự lựa chọn giữa 2 hình thức nghệ thuật."
+                }
+            },
+
+            // --- SECTION XI & XII: TEXT STRUCTURE & ORDERING (IMAGE 3) ---
+            {
+                type: "mc",
+                qNumLabel: "Sec XI - Task 1",
+                section: "Section XI: Text Topic",
+                passage: "(1) ____. You can make simple and tasty dishes at home. (2) ____. Cooking is not only useful but also fun.",
+                question: "1. Choose the TOPIC SENTENCE that can BEGIN the text most appropriately:",
+                options: [
+                    "A. Children shouldn’t cook.",
+                    "B. Eating out is always better than cooking.",
+                    "C. Only chefs can cook delicious food.",
+                    "D. Learning how to cook is a good idea."
+                ],
+                correct: 3,
+                explanation: {
+                    step1: "Học cách nấu ăn là một ý tưởng hay. Bạn có thể tự làm các món ăn đơn giản và ngon miệng tại nhà...",
+                    step2: "• Learning how to cook is a good idea: Học cách nấu ăn là một ý tưởng hay",
+                    step3: "Câu mở đầu nêu ý tổng quát đánh giá việc học nấu ăn là ý tưởng hay, dẫn dắt các lợi ích nấu ăn tại nhà ở phía sau.",
+                    step4: "Loại A, B, C vì mang nét nghĩa tiêu cực/phủ định việc nấu ăn tại nhà."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec XI - Task 2",
+                section: "Section XI: Sentence Order",
+                passage: "a. First, it helps you eat healthier and save money.<br>b. Moreover, cooking for your family and friends brings happiness and connection.<br>c. In the end, learning to cook improves life skills and builds confidence.",
+                question: "2. Put the sentences (a-c) in the correct order, then fill in the blank (2) to make a logical text:",
+                options: ["A. b-a-c", "B. a-b-c", "C. c-a-b", "D. a-c-b"],
+                correct: 1,
+                explanation: {
+                    step1: "Trình tự logic các câu:<br>a. Đầu tiên (First), nó giúp bạn ăn uống lành mạnh và tiết kiệm tiền.<br>b. Hơn nữa (Moreover), nấu ăn cho gia đình mang lại hạnh phúc...<br>c. Cuối cùng (In the end), học nấu ăn cải thiện kỹ năng sống...",
+                    step2: "• Trình tự từ nối: First (a) -> Moreover (b) -> In the end (c)",
+                    step3: "Mạch liên kết logic hoàn hảo theo từ nối thời gian/lập luận: a - b - c -> Chọn đáp án B.",
+                    step4: "Loại A, C, D vì xáo trộn các từ nối chỉ trình tự First -> Moreover -> In the end."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec XII - Task 1",
+                section: "Section XII: Sentence Order",
+                passage: "I helped my family prepare dinner last night. ________<br>a. Then, we put all the ingredients together and cooked it on the stovetop.<br>b. We decided to make spaghetti and meatballs, my favourite meal!<br>c. First, we washed our hands and gathered all the ingredients we needed.",
+                question: "1. Put the sentences (a-c) in the correct order, then fill in the blank to make a logical text:",
+                options: ["A. b-a-c", "B. a-c-b", "C. c-b-a", "D. b-c-a"],
+                correct: 3,
+                explanation: {
+                    step1: "Tớ đã giúp gia đình chuẩn bị bữa tối tối qua.<br>b. Chúng tớ quyết định làm món mì Ý sốt thịt băm, món ăn yêu thích của tớ!<br>c. Đầu tiên (First), chúng tớ rửa tay và chuẩn bị các nguyên liệu cần thiết.<br>a. Sau đó (Then), chúng tớ trộn nguyên liệu và nấu trên bếp.",
+                    step2: "• Trình tự chuẩn bị nấu ăn: Chọn món (b) -> Bước 1 rửa tay chuẩn bị (c) -> Bước 2 tiến hành nấu (a)",
+                    step3: "Mạch câu chuẩn logic: b - c - a -> Chọn đáp án D.",
+                    step4: "Loại A, B, C vì vi phạm trình tự chọn món ăn trước khi rửa tay và nấu."
+                }
+            },
+            {
+                type: "mc",
+                qNumLabel: "Sec XII - Task 2",
+                section: "Section XII: Text Ending",
+                question: "2. Choose the sentence that can end the text (in Section XII) most appropriately:",
+                options: [
+                    "A. It felt good to help out in the kitchen and be a part of making dinner.",
+                    "B. The meal was delicious and we enjoyed eating together.",
+                    "C. After breakfast, we cleaned up the kitchen and relaxed together in the living room.",
+                    "D. It was a fun experience, and I learned some new cooking skills."
+                ],
+                correct: 1,
+                explanation: {
+                    step1: "Bữa ăn rất ngon và chúng tớ đã cùng nhau thưởng thức vui vẻ.",
+                    step2: "• The meal was delicious and we enjoyed eating together.: Bữa ăn rất ngon và chúng tớ cùng nhau thưởng thức.",
+                    step3: "Sau khi hoàn thành công đoạn nấu nướng trên bếp ('cooked it on the stovetop'), hành động khép lại trọn vẹn bữa tối là cùng thưởng thức bữa ăn ngon ('enjoyed eating together').",
+                    step4: "Loại A, D chưa khép lại bằng việc ăn tối; C nhắc tới 'breakfast' (bữa sáng) bị mâu thuẫn với 'dinner' (bữa tối)."
+                }
+            }
+        ];
+
+        // Global State variables
+        let userAnswers = new Array(quizData.length).fill(null);
+
+        // Web Audio API Sound Generators
+        function playCorrectSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+                osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.25); // A5
+                gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.3);
+            } catch(e){}
+        }
+
+        function playWrongSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(220, ctx.currentTime); // A3
+                osc.frequency.linearRampToValueAtTime(130, ctx.currentTime + 0.3); // C3
+                gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.3);
+            } catch(e){}
+        }
+
+        // Pure JS Confetti Effect
+        function triggerConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const particles = [];
+            const colors = ['#00D26A', '#FF4757', '#FDCB6E', '#8854C0', '#00C9A7', '#E84393'];
+            
+            for(let i=0; i<90; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: Math.random() * 4 + 3,
+                    rot: Math.random() * 360,
+                    rotSpeed: (Math.random() - 0.5) * 8
+                });
+            }
+
+            let frame = 0;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.rot += p.rotSpeed;
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rot * Math.PI / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                    ctx.restore();
+                });
+                frame++;
+                if(frame < 100) {
+                    requestAnimationFrame(animate);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+            animate();
+        }
+
+        // Shuffle Options Algorithm
+        function shuffleOptions(array) {
+            let arr = array.map((opt, idx) => ({ text: opt, originalIndex: idx }));
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // Render Questions
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            quizData.forEach((q, qIdx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `q-card-${qIdx}`;
+
+                let passageHTML = '';
+                if(q.passage) {
+                    passageHTML = `<div class="passage-box">${q.passage}</div>`;
+                }
+
+                const shuffled = shuffleOptions(q.options);
+                q.shuffledOptions = shuffled;
+
+                let optionsHTML = '';
+                shuffled.forEach((opt, optIdx) => {
+                    optionsHTML += `
+                        <button class="option-btn" 
+                                id="opt-${qIdx}-${optIdx}" 
+                                onclick="selectOption(${qIdx}, ${optIdx}, ${opt.originalIndex})">
+                            ${opt.text}
+                        </button>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div>
+                        <span class="section-tag">${q.section}</span>
+                        <span class="question-number">${q.qNumLabel} (${qIdx + 1}/${quizData.length})</span>
+                    </div>
+                    ${passageHTML}
+                    <div class="question-text">${q.question}</div>
+                    <div class="options-grid" id="opts-grid-${qIdx}">
+                        ${optionsHTML}
+                    </div>
+                    <div class="explanation-box" id="exp-${qIdx}">
+                        <div class="exp-title">💡 GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG:</div>
+                        <div class="exp-step"><span class="exp-step-title">Bước 1 (Dịch câu):</span> ${q.explanation.step1}</div>
+                        <div class="exp-step"><span class="exp-step-title">Bước 2 (Từ vựng/Đáp án):</span><br>${q.explanation.step2}</div>
+                        <div class="exp-step"><span class="exp-step-title">Bước 3 (Tại sao ĐÚNG):</span> ${q.explanation.step3}</div>
+                        <div class="exp-step"><span class="exp-step-title">Bước 4 (Tại sao SAI):</span> ${q.explanation.step4}</div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // Handle Answer Selection
+        function selectOption(qIdx, shuffledIdx, originalIdx) {
+            if(userAnswers[qIdx] !== null) return;
+
+            const q = quizData[qIdx];
+            userAnswers[qIdx] = (originalIdx === q.correct);
+
+            const grid = document.getElementById(`opts-grid-${qIdx}`);
+            const buttons = grid.querySelectorAll('.option-btn');
+            
+            buttons.forEach(btn => btn.disabled = true);
+
+            const selectedBtn = document.getElementById(`opt-${qIdx}-${shuffledIdx}`);
+
+            if(originalIdx === q.correct) {
+                selectedBtn.classList.add('correct');
+                playCorrectSound();
+                triggerConfetti();
+            } else {
+                selectedBtn.classList.add('wrong');
+                playWrongSound();
+                
+                q.shuffledOptions.forEach((opt, idx) => {
+                    if(opt.originalIndex === q.correct) {
+                        document.getElementById(`opt-${qIdx}-${idx}`).classList.add('correct');
+                    }
+                });
+            }
+
+            const expBox = document.getElementById(`exp-${qIdx}`);
+            expBox.style.display = 'block';
+        }
+
+        // Submit Quiz & Show Result Modal
+        function submitQuiz() {
+            let correctCount = 0;
+            userAnswers.forEach(ans => {
+                if(ans === true) correctCount++;
+            });
+
+            const total = quizData.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('modal-score').innerText = `${correctCount}/${total}`;
+
+            let feedback = '';
+            if(percentage < 50) {
+                feedback = '“Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!”';
+            } else if(percentage <= 80) {
+                feedback = '“Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!”';
+            } else {
+                feedback = '“Làm tốt lắm, con cố gắng rinh điểm 10 ở lần sau nha!”';
+                triggerConfetti();
+            }
+
+            document.getElementById('modal-msg').innerText = feedback;
+            document.getElementById('result-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').style.display = 'none';
+        }
+
+        // Initialize Quiz on load
+        window.onload = renderQuiz;
+    </script>
+</body>
+</html>
